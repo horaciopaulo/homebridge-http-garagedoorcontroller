@@ -601,7 +601,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 		}
 
 		this.log.info("%s Garage Door state is: %s", (initial ? "INITIAL" : "NEW"), this._doorStateToString(state));
-		if( (state==DoorState.OPEN) && (this.doorAutoClose) && (isFromTargetState))
+		if( (state==DoorState.OPEN) && (this.doorAutoClose) && (!isFromTargetState))
 		{
 		
 				this.log.info("Now we should wait a few seconds and start closing....");
