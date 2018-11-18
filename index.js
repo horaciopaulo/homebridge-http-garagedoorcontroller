@@ -419,14 +419,17 @@ HttpGarageDoorControllerAccessory.prototype = {
 
 			// When no status is available, create a callback to set current state to target state after the specified amount of time
 			if (!that._hasDoorState()) {
+				this.log.info("Instruction to set state as : %s",  this.doorStateToString(newstate));
+
 				var setDoorTargetStateFinal = function() {
-					this._setDoorCurrentState(DoorState.CLOSED);
+					this._setDoorCurrentState(this._doorTargetState);
 				};
 
 				setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
 
 				
 			}
+			
 
 			callback();
 		});
