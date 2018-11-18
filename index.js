@@ -603,12 +603,9 @@ HttpGarageDoorControllerAccessory.prototype = {
 		this.log.info("%s Garage Door state is: %s", (initial ? "INITIAL" : "NEW"), this._doorStateToString(state));
 		if( (state==DoorState.OPEN) && (this.doorAutoClose) && (!isFromTargetState))
 		{
-		this.log.info("Now we should wait a few seconds and start closing....");
-		}
-		this._doorCurrentState = state;
-		this.garageDoorCurrentState.setValue(this._doorCurrentState);
 		if ((this.doorAutoClose) && (isFromTargetState))
 		{
+				this.log.info("Now we should wait a few seconds and start closing....");
 				var setDoorTargetStateFinalClosed = function() {
 					this._setDoorTargetState(DoorState.CLOSED,initial,true);
 				};
@@ -617,6 +614,11 @@ HttpGarageDoorControllerAccessory.prototype = {
 				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
 				return;
 		}
+
+		}
+		this._doorCurrentState = state;
+		this.garageDoorCurrentState.setValue(this._doorCurrentState);
+		
 
 
 		this._doorObstructionDetected = (this._doorCurrentState == DoorState.STOPPED);
