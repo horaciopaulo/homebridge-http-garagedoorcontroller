@@ -1,4 +1,4 @@
-# homebridge-http-garagedoorcontroller (v2)
+# homebridge-http-garagedoorcontroller (v2) WITH AUTO CLOSE
 An HTTP based Garage Door/Light plugin for [HomeBridge](https://github.com/nfarina/homebridge)
 
 ![Demo](https://github.com/washcroft/HttpGarageDoorController/raw/master/reference/demo.gif "Demo")
