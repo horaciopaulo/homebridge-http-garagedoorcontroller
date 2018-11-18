@@ -621,13 +621,17 @@ HttpGarageDoorControllerAccessory.prototype = {
 		{
 		
 				this.log.info("Now we should wait a few seconds and start closing....");
-				var setDoorTargetStateFinalClosed = function() {
-					this._setDoorTargetState(DoorState.CLOSED,false,false);
+				var setDoorTargetStateFinalClosed = function(a,callback) {
+					this._setDoorTargetState(a,false,false);
+					callback();
+				};
+				var setDoorCurrentStateFinalClosed = function(a) {
+					this._setDoorCurrentState(a,false,false);
 				};
 
 
-				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
-				
+				setTimeout(setDoorTargetStateFinalClosed(DoorState.CLOSED,setDoorCurrentStateFinalClosed).bind(this), this.doorOperationSeconds * 1000);
+
 		
 
 		}
