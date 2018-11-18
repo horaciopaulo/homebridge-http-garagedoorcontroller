@@ -606,17 +606,18 @@ HttpGarageDoorControllerAccessory.prototype = {
 		this.log.info("Now we should wait a few seconds and start closing....");
 		}
 		this._doorCurrentState = state;
+		this.garageDoorCurrentState.setValue(this._doorCurrentState);
 		if ((this.doorAutoClose) && (isFromTargetState))
 		{
 				var setDoorTargetStateFinalClosed = function() {
-					this._setDoorCurrentState(DoorState.CLOSED,initial,false);
+					this._setDoorTargetState(DoorState.CLOSED,initial,true);
 				};
 
 
 				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
 				return;
 		}
-		this.garageDoorCurrentState.setValue(this._doorCurrentState);
+
 
 		this._doorObstructionDetected = (this._doorCurrentState == DoorState.STOPPED);
 		this.garageDoorObstructionDetected.setValue(this._doorObstructionDetected);
