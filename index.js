@@ -608,6 +608,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 		this._doorCurrentState = state;
 		if (this.doorAutoClose)
 		{
+		that=this;
 							// HERE
 					var setDoorTargetStateFinal = function() {
 					this._setDoorCurrentState(DoorState.CLOSED);
