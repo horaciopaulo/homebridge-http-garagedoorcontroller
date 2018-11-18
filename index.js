@@ -181,7 +181,8 @@ function HttpGarageDoorControllerAccessory(log, config) {
 
 			case "Json":
 			case "Generic":
-				this.doorAutoClose = getConfigValue(config.apiConfig, "doorAutoClose", false);
+				this.doorAutoClose = getConfigValue(config, "doorAutoClose", false);
+
 				if (!this.doorAutoClose) {
 						this.log.error("ERROR - Missing or invalid configuration field 'doorAutoClose'");
 						configurationValid = false;
