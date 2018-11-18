@@ -182,11 +182,13 @@ function HttpGarageDoorControllerAccessory(log, config) {
 			case "Json":
 			case "Generic":
 				this.doorAutoClose = getConfigValue(config, "doorAutoClose", false);
-
-				if (!this.doorAutoClose) {
-						this.log.error("ERROR - Missing or invalid configuration field 'doorAutoClose'");
+				if (doorAutoClose){
+				this.simulateDoorOpenSeconds = parseInt(getConfigValue(config, "simulateDoorOpenSeconds", 0)) || 0;
+					if (!this.doorOperationSeconds || (this.doorOperationSeconds <= 0)) {
+						this.log.error("ERROR - Missing or invalid configuration field 'simulateDoorOpenSeconds' when 'apiConfig.doorStateUrl' is not set");
 						configurationValid = false;
 					}
+				}
 				this.apiConfig.doorStateUrl = getConfigValue(config.apiConfig, "doorStateUrl", null);
 				if (this.apiConfig.doorStateUrl) {
 					this.apiConfig.doorStateMethod = getConfigValue(config.apiConfig, "doorStateMethod", null);
@@ -629,8 +631,8 @@ HttpGarageDoorControllerAccessory.prototype = {
 				};
 
 
-				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
-				setTimeout(setDoorCurrentStateFinalClosed.bind(this), this.doorOperationSeconds * 2*1000);
+				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.simulateDoorOpenSeconds * 1000);
+				setTimeout(setDoorCurrentStateFinalClosed.bind(this), this.doorOperationSeconds * 1000 + simulateDoorOpenSeconds * 1000);
 				
 		
 
