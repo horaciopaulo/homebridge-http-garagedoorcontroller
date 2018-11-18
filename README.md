@@ -12,7 +12,7 @@ The Arduino controller toggles GPIO outputs to operate the garage door (using ei
 
 The Arduino controller also uses GPIO inputs to report the state of the garage door (two inputs from separate open/closed reed switches) and also a third input to allow the garage light to be controlled via another source (i.e. the garage door operator itself).
 
->>>Trying to change this to implement AUTO CLOSE DOOR
+>>>>Trying to change this to implement AUTO CLOSE DOOR. TESTING NEEDED!!!
 
 ### Arduino Project
 My Arduino project which accompanies this HomeBridge plugin can be found at [HttpGarageDoorController](https://github.com/washcroft/HttpGarageDoorController), however this plugin can work for other implementations too.
@@ -30,6 +30,7 @@ HomeBridge configuration sample:
       "lightName": "Garage Light",
       
       "doorOperationSeconds": 0,
+      "simulateDoorOpenSeconds": 10,
       "doorAutoClose": true,
       
       "httpHost": "garagedoorcontroller.local",
