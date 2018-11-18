@@ -181,6 +181,7 @@ function HttpGarageDoorControllerAccessory(log, config) {
 
 			case "Json":
 			case "Generic":
+				this.doorAutoClose = getConfigValue(config.apiConfig, "doorAutoClose", false);
 				this.apiConfig.doorStateUrl = getConfigValue(config.apiConfig, "doorStateUrl", null);
 				if (this.apiConfig.doorStateUrl) {
 					this.apiConfig.doorStateMethod = getConfigValue(config.apiConfig, "doorStateMethod", null);
@@ -582,7 +583,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 	},
 
 	_setDoorCurrentState: function(state, initial, isFromTargetState) {
-		this.log.debug("Entered _setDoorCurrentState(state: %s, initial: %s, isFromTargetState: %s)", this._doorStateToString(state), (initial || false), (isFromTargetState || false));
+		this.log.debug("Entered orcas _setDoorCurrentState(state: %s, initial: %s, isFromTargetState: %s)", this._doorStateToString(state), (initial || false), (isFromTargetState || false));
 		this._doorCurrentStateSetAt = Date.now();
 
 		if ((this._doorCurrentState == state) && (!initial)) {

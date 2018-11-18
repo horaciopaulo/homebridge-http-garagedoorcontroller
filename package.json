@@ -19,12 +19,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/washcroft/homebridge-http-garagedoorcontroller.git"
+    "url": "https://github.com/horaciopaulo/homebridge-http-garagedoorcontroller.git"
   },
   "bugs": {
-    "url": "https://github.com/washcroft/homebridge-http-garagedoorcontroller/issues"
+    "url": "https://github.com/horaciopaulo/homebridge-http-garagedoorcontroller/issues"
   },
-  "homepage": "https://github.com/washcroft/homebridge-http-garagedoorcontroller",
+  "homepage": "https://github.com/horaciopaulo/homebridge-http-garagedoorcontroller",
   "engines": {
     "node": ">=6.10.0",
     "homebridge": ">=0.4.28"
