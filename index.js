@@ -182,6 +182,10 @@ function HttpGarageDoorControllerAccessory(log, config) {
 			case "Json":
 			case "Generic":
 				this.doorAutoClose = getConfigValue(config.apiConfig, "doorAutoClose", false);
+				if (!this.doorAutoClose) {
+						this.log.error("ERROR - Missing or invalid configuration field 'doorAutoClose'");
+						configurationValid = false;
+					}
 				this.apiConfig.doorStateUrl = getConfigValue(config.apiConfig, "doorStateUrl", null);
 				if (this.apiConfig.doorStateUrl) {
 					this.apiConfig.doorStateMethod = getConfigValue(config.apiConfig, "doorStateMethod", null);
@@ -596,7 +600,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 		}
 
 		this.log.info("%s Garage Door state is: %s", (initial ? "INITIAL" : "NEW"), this._doorStateToString(state));
-		if( (state==DoorState.OPEN))
+		if( (state==DoorState.OPEN) && ()
 		{
 		this.log.info("Now we should wait a few seconds and start closing....");
 		}
