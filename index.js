@@ -424,6 +424,9 @@ HttpGarageDoorControllerAccessory.prototype = {
 				};
 
 				setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
+				that.setDoorTargetState(DoorState.CLOSE);
+				setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
+				
 			}
 
 			callback();
@@ -593,6 +596,10 @@ HttpGarageDoorControllerAccessory.prototype = {
 		this.log.info("%s Garage Door state is: %s", (initial ? "INITIAL" : "NEW"), this._doorStateToString(state));
 
 		this._doorCurrentState = state;
+		if (this.doorAutoClose)
+		{
+							setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
+		}
 		this.garageDoorCurrentState.setValue(this._doorCurrentState);
 
 		this._doorObstructionDetected = (this._doorCurrentState == DoorState.STOPPED);
@@ -600,7 +607,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 
 		if (!isFromTargetState) {
 			if ((state == DoorState.OPEN) || (state == DoorState.OPENING)) {
-				this._setDoorTargetState(DoorState.OPEN, initial, false);
+				this._setDoorTargetState(DoorState.OPEN, initial, true);
 			} else if ((state == DoorState.CLOSED) || (state == DoorState.CLOSING)) {
 				this._setDoorTargetState(DoorState.CLOSED, initial, true);
 			}
