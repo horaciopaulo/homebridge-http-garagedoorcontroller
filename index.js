@@ -619,19 +619,19 @@ HttpGarageDoorControllerAccessory.prototype = {
 		}
 		if( (state==DoorState.OPEN) && (this.doorAutoClose) && (!isFromTargetState))
 		{
-				that=this
+		
 				this.log.info("Now we should wait a few seconds and start closing....");
-				var setDoorTargetStateFinalClosed = function(a,callback) {
-					that._setDoorTargetState(a,false,false);
-					callback();
+				var setDoorTargetStateFinalClosed = function() {
+					this._setDoorTargetState(DoorState.CLOSED,false,false);
 				};
-				var setDoorCurrentStateFinalClosed = function(a) {
-					that._setDoorCurrentState(a,false,false);
+				var setDoorCurrentStateFinalClosed = function() {
+					this._setDoorCurrentState(DoorState.CLOSED,false,false);
 				};
 
 
-				setTimeout(setDoorTargetStateFinalClosed(DoorState.CLOSED,setDoorCurrentStateFinalClosed).bind(that), that.doorOperationSeconds * 1000);
-
+				setTimeout(setDoorTargetStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
+				setTimeout(setDoorCurrentStateFinalClosed.bind(this), this.doorOperationSeconds * 1000);
+				
 		
 
 		}
