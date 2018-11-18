@@ -424,8 +424,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 				};
 
 				setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
-				that.setDoorTargetState(DoorState.CLOSE);
-				setTimeout(setDoorTargetStateFinal.bind(that), that.doorOperationSeconds * 1000);
+
 				
 			}
 
