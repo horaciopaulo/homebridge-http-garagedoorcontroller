@@ -613,7 +613,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 				};
 
 
-				setTimeout(setDoorTargetStateFinal.bind(this), that.doorOperationSeconds * 1000);
+				setTimeout(setDoorTargetStateFinalClosed.bind(this), that.doorOperationSeconds * 1000);
 	
 		}
 		this.garageDoorCurrentState.setValue(this._doorCurrentState);
