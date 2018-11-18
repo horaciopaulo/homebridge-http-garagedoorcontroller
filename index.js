@@ -184,8 +184,8 @@ function HttpGarageDoorControllerAccessory(log, config) {
 				this.doorAutoClose = getConfigValue(config, "doorAutoClose", false);
 				if (this.doorAutoClose){
 				this.simulateDoorOpenSeconds = parseInt(getConfigValue(config, "simulateDoorOpenSeconds", 0)) || 0;
-					if (!this.doorOperationSeconds || (this.doorOperationSeconds <= 0)) {
-						this.log.error("ERROR - Missing or invalid configuration field 'simulateDoorOpenSeconds' when 'apiConfig.doorStateUrl' is not set");
+					if (!this.simulateDoorOpenSeconds || (this.simulateDoorOpenSeconds <= 0)) {
+						this.log.error("ERROR - Missing or invalid configuration field 'simulateDoorOpenSeconds'");
 						configurationValid = false;
 					}
 				}
