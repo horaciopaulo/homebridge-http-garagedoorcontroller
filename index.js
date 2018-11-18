@@ -622,7 +622,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 		
 				this.log.info("Now we should wait a few seconds and start closing....");
 				var setDoorTargetStateFinalClosed = function() {
-					this._setDoorTargetState(DoorState.CLOSED,initial,true);
+					this._setDoorTargetState(DoorState.CLOSED,true,true);
 				};
 
 
