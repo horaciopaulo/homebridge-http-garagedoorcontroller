@@ -600,7 +600,7 @@ HttpGarageDoorControllerAccessory.prototype = {
 
 		if (!isFromTargetState) {
 			if ((state == DoorState.OPEN) || (state == DoorState.OPENING)) {
-				this._setDoorTargetState(DoorState.OPEN, initial, true);
+				this._setDoorTargetState(DoorState.OPEN, initial, false);
 			} else if ((state == DoorState.CLOSED) || (state == DoorState.CLOSING)) {
 				this._setDoorTargetState(DoorState.CLOSED, initial, true);
 			}
